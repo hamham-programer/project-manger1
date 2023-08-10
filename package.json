@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon node app.js"
+    "start": "nodemon node app.js",
+    "start1": "nodemon node matched-routes.js"
+
   },
   "keywords": [],
   "author": "",
