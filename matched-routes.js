@@ -34,9 +34,9 @@ app.get("/file.txt", (req, res) =>{
     res.send ("Accpted:"+ req.url)
 })*/
 
-app.get(/.*nodejs$/ig, (req, res) =>{//abcde || abe
+/*app.get(/.*nodejs$/ig, (req, res) =>{//abcde || abe
     res.send ("Accpted:"+ req.url)
-})
+})*/
 app.listen(3000, ()=>{
     console.log("server run on port 3000");
 })
