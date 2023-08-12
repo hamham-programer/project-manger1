@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/static/style.css")
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        title pug template engine  
+    body 
+        // اضافه کردن فابل partials
+        include partials/_nav
+        div.container
+        header.red
+            h1 pug template engine 
+        section.blue
+            h2 #{section}
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe error laboriosam quam ipsam maiores officia nisi provident nemo dolorum iure!
+        table(border = "1")       
+            each user  in users 
+                tr 
+                   th #{user.id}
+                   th #{user.name}
+                   
+        each num in [1,2,3]   
+            li=num
+        each value, key in {a:1, b:2}    
+            li #{key} : #{value}
+
+        include partials/_footer
