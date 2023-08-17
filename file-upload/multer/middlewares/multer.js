@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
     //روش اول
    /* filename: function (req, file, cb) {
     const ext = path.extname(file.originalname)
-    const withlistformat = ["png", "jpg", "webp", "jpeg"]
+    const withlistformat = ["PNG", "jpg", "webp", "jpeg"]
     if (withlistformat.includes(ext)) {
         const fileName = Date.now() + ext;
         cb(null, fileName)
@@ -18,20 +18,31 @@ const storage = multer.diskStorage({
         }
        
     }*/
+    
     filename: function (req, file, cb) {
         const ext = path.extname(file.originalname)
-        //فیلتر کردن
-        const withlistmimType = ["image/png", "image/jpg", "image/webp", "image/jpeg"]
-        if (withlistmimType.includes(file.mimetype)) {
+        const whiteListFormat = ['.png', '.jpg', '.jpeg', '.webp']
+        const whiteListMimType = ['image/png', 'image/jpg', 'image/jpeg', 'image/webp']
+        if(whiteListMimType.includes(file.mimetype)) {
             const fileName = Date.now() + ext;
             cb(null, fileName)
-            }else {
-                cb (new Error("only png, jpg, webp, jpeg  format allowed"))
-            }  
+        }else {
+            cb(new Error("only .png, .jpg, .jpeg, .webp format allowed"))
         }
+
+    }
+});
+const _1MB = 1 * 1000 *1000
+const _2MB = 2 * 1000 *1000
+const _3MB = 3 * 1000 *1000
+const _750kb = 768000 
+const uploadfile = multer({
+    storage,
+    limits:{
+        fileSize: _2MB
+    }
 })
-const uploadfile = multer({storage})
 module.exports ={
-    uploadfile
+    uploadfile,
 
 }
